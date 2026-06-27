@@ -427,3 +427,88 @@
   ::selection{background:#2E97A8;color:#0c0e10}
   @keyframes vcfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
   @keyframes vcbar{from{transform:scaleY(.3)}to{transform:scaleY(1)}}
+
+/* ── Animate-in ─────────────────────────────────────────────────────────── */
+[data-animate]{
+  opacity:0;
+  transform:translateY(28px);
+  transition:opacity .55s cubic-bezier(.22,1,.36,1), transform .55s cubic-bezier(.22,1,.36,1);
+}
+[data-animate].vc-visible{opacity:1;transform:translateY(0)}
+
+/* ── Hero canvas wrapper ─────────────────────────────────────────────────── */
+#hero-bg{display:block}
+
+/* ── Logo ticker ─────────────────────────────────────────────────────────── */
+.ticker-wrap{
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:var(--panel);
+  padding:28px 0;
+  overflow:hidden;
+  position:relative;
+}
+.ticker-label{
+  position:absolute;
+  left:40px;
+  top:50%;
+  transform:translateY(-50%);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  color:var(--muted);
+  z-index:2;
+  white-space:nowrap;
+  background:var(--panel);
+  padding-right:24px;
+}
+.ticker-outer{
+  overflow:hidden;
+  padding-left:220px;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 12%,#000 88%,transparent 100%);
+  mask-image:linear-gradient(to right,transparent 0,#000 12%,#000 88%,transparent 100%);
+}
+.ticker-inner{
+  display:flex;
+  width:max-content;
+  gap:0;
+  animation:ticker-scroll 28s linear infinite;
+}
+.ticker-inner span{
+  font-family:'Archivo',sans-serif;
+  font-weight:700;
+  font-size:17px;
+  letter-spacing:.08em;
+  color:var(--silver);
+  opacity:.55;
+  padding:0 48px;
+  white-space:nowrap;
+  transition:opacity .2s;
+}
+.ticker-inner span:hover{opacity:.9}
+.ticker-wrap:hover .ticker-inner{animation-play-state:paused}
+@keyframes ticker-scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
+/* ── Subtle card hover lift ──────────────────────────────────────────────── */
+.vc-card{
+  transition:transform .22s cubic-bezier(.22,1,.36,1), box-shadow .22s ease, border-color .22s ease;
+}
+.vc-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 40px rgba(0,0,0,.35);
+}
+
+/* ── Metric count-up pulse ───────────────────────────────────────────────── */
+@keyframes vc-metric-in{
+  from{opacity:0;transform:scale(.85)}
+  to{opacity:1;transform:scale(1)}
+}
+.vc-metric-value{
+  display:inline-block;
+  animation:none;
+}
+.vc-metric-value.counted{animation:vc-metric-in .4s cubic-bezier(.22,1,.36,1) both}
