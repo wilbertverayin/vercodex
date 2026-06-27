@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<title>Vercodex</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="img/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div ref="{{ rootRef }}" style="--bg:#15181B;--panel:#1C2127;--panel2:#232A30;--line:#2C343B;--text:#E9EBED;--muted:#98A1A8;--teal:#2E97A8;--teal2:#1E6776;--tealSoft:#1B3940;--gold:#C4952D;--goldSoft:#3E331A;--silver:#B1B1AE;background:var(--bg);min-height:100vh;width:100%;font-family:'IBM Plex Sans',sans-serif;color:var(--text);overflow-x:hidden">
+
+  <!-- ============ NAV ============ -->
+  <div style="position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 82%, transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)">
+    <div style="max-width:1200px;margin:0 auto;padding:16px 40px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+      <div style="display:flex;align-items:center;gap:13px">
+        <svg width="30" height="30" viewBox="-120 -120 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="var(--bg)" stroke-width="5" stroke-linejoin="round" style="display:block">
+          <g transform="rotate(0)" fill="var(--silver)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+          <g transform="rotate(60)" fill="var(--gold)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+          <g transform="rotate(120)" fill="var(--gold)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+          <g transform="rotate(180)" fill="var(--teal)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+          <g transform="rotate(240)" fill="var(--teal)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+          <g transform="rotate(300)" fill="var(--silver)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+        </svg>
+        <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;letter-spacing:-0.01em">VERCODEX</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:30px">
+        <a href="#features" style="font-size:14px;color:var(--muted);text-decoration:none" style-hover="color:var(--text)">Platform</a>
+        <a href="#industries" style="font-size:14px;color:var(--muted);text-decoration:none" style-hover="color:var(--text)">Industries</a>
+        <a href="#pricing" style="font-size:14px;color:var(--muted);text-decoration:none" style-hover="color:var(--text)">Engagements</a>
+        <a href="#faq" style="font-size:14px;color:var(--muted);text-decoration:none" style-hover="color:var(--text)">FAQ</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="display:flex;gap:4px;padding:4px;background:var(--panel);border:1px solid var(--line);border-radius:10px">
+          <sc-for list="{{ themes }}" as="t" hint-placeholder-count="3">
+            <button onclick="{{ t.select }}" style="{{ t.style }}" title="{{ t.label }}">{{ t.dot }}</button>
+          </sc-for>
+        </div>
+        <a href="#cta" style="font-family:'IBM Plex Sans';font-weight:600;font-size:13px;color:#0c1416;background:var(--teal);border:none;padding:10px 18px;border-radius:9px;cursor:pointer;text-decoration:none" style-hover="filter:brightness(1.08)">Get updates</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ HERO A ============ -->
+  <sc-if value="{{ heroA }}" hint-placeholder-val="{{ true }}">
+  <div style="position:relative;max-width:1200px;margin:0 auto;padding:120px 40px 110px;text-align:center;overflow:hidden">
+    <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);opacity:.05;pointer-events:none">
+      <svg width="640" height="640" viewBox="-120 -120 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round" style="display:block;animation:vcfloat 9s ease-in-out infinite">
+        <g transform="rotate(0)" fill="var(--silver)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+        <g transform="rotate(60)" fill="var(--gold)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+        <g transform="rotate(120)" fill="var(--gold)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+        <g transform="rotate(180)" fill="var(--teal)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+        <g transform="rotate(240)" fill="var(--teal)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+        <g transform="rotate(300)" fill="var(--silver)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+      </svg>
+    </div>
+    <div style="position:relative">
+      <div style="display:inline-flex;align-items:center;gap:9px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);background:var(--panel);padding:7px 15px;border-radius:999px;margin-bottom:30px"><span style="width:6px;height:6px;border-radius:50%;background:var(--teal)"></span>Software for the industries that power progress</div>
+      <h1 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:74px;line-height:1.02;letter-spacing:-0.03em;max-width:16ch;margin:0 auto;text-wrap:balance">Move humanity's advancement <span style="color:var(--teal)">forward.</span></h1>
+      <p style="margin:26px auto 0;font-size:18px;line-height:1.6;color:var(--muted);max-width:60ch">Vercodex builds the applications that high-stakes industries run on — energy, capital, aerospace, life sciences and advanced manufacturing. Less friction, more output, measurable progress.</p>
+      <div style="margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:14px">
+        <sc-if value="{{ subscribed }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;align-items:center;gap:10px;background:var(--tealSoft);border:1px solid var(--teal2);padding:14px 22px;border-radius:12px;font-size:15px;color:var(--text)"><span style="width:20px;height:20px;border-radius:50%;background:var(--teal);color:#0c1416;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">✓</span>You're on the list — we'll be in touch.</div>
+        </sc-if>
+        <sc-if value="{{ notSubscribed }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;gap:10px;background:var(--panel);border:1px solid var(--line);padding:7px 7px 7px 8px;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.4)">
+            <input value="{{ email }}" oninput="{{ setEmail }}" placeholder="you@company.com" style="font-family:'IBM Plex Sans';font-size:15px;color:var(--text);background:transparent;border:none;outline:none;padding:11px 14px;width:280px">
+            <button onclick="{{ submitEmail }}" style="font-family:'IBM Plex Sans';font-weight:600;font-size:15px;color:#0c1416;background:var(--teal);border:none;padding:11px 24px;border-radius:9px;cursor:pointer;white-space:nowrap" style-hover="filter:brightness(1.08)">Notify me</button>
+          </div>
+        </sc-if>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)">No spam. Product updates and early access only.</span>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ HERO B ============ -->
+  <sc-if value="{{ heroB }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width:1200px;margin:0 auto;padding:96px 40px 90px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:64px;align-items:center">
+    <div>
+      <div style="display:inline-flex;align-items:center;gap:9px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:24px"><span style="width:18px;height:1px;background:var(--gold)"></span>Engineering the infrastructure of progress</div>
+      <h1 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:62px;line-height:1.04;letter-spacing:-0.03em;text-wrap:balance">Software for the industries that <span style="color:var(--teal)">move the world.</span></h1>
+      <p style="margin-top:24px;font-size:17px;line-height:1.6;color:var(--muted);max-width:52ch">We build focused applications for the sectors that power modern life — then instrument them so every gain is measurable. From the first commit to compounding output.</p>
+      <div style="margin-top:34px">
+        <sc-if value="{{ subscribed }}" hint-placeholder-val="{{ false }}">
+          <div style="display:inline-flex;align-items:center;gap:10px;background:var(--tealSoft);border:1px solid var(--teal2);padding:14px 22px;border-radius:12px;font-size:15px"><span style="width:20px;height:20px;border-radius:50%;background:var(--teal);color:#0c1416;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">✓</span>You're on the list — we'll be in touch.</div>
+        </sc-if>
+        <sc-if value="{{ notSubscribed }}" hint-placeholder-val="{{ true }}">
+          <div style="display:inline-flex;gap:10px;background:var(--panel);border:1px solid var(--line);padding:7px 7px 7px 8px;border-radius:14px">
+            <input value="{{ email }}" oninput="{{ setEmail }}" placeholder="you@company.com" style="font-family:'IBM Plex Sans';font-size:15px;color:var(--text);background:transparent;border:none;outline:none;padding:11px 14px;width:240px">
+            <button onclick="{{ submitEmail }}" style="font-family:'IBM Plex Sans';font-weight:600;font-size:15px;color:#0c1416;background:var(--teal);border:none;padding:11px 24px;border-radius:9px;cursor:pointer;white-space:nowrap">Notify me</button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+    <div style="position:relative">
+      <div style="border:1px solid var(--line);border-radius:18px;background:var(--panel);box-shadow:0 30px 70px rgba(0,0,0,.5);overflow:hidden">
+        <div style="display:flex;align-items:center;gap:7px;padding:14px 18px;border-bottom:1px solid var(--line)">
+          <span style="width:10px;height:10px;border-radius:50%;background:#D2604A"></span><span style="width:10px;height:10px;border-radius:50%;background:var(--gold)"></span><span style="width:10px;height:10px;border-radius:50%;background:#3DBE8B"></span>
+          <span style="margin-left:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)">vercodex / operations</span>
+        </div>
+        <div style="padding:22px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px">
+            <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em">Throughput</div><div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:34px;color:var(--teal);line-height:1.1">2.84M<span style="font-size:15px;color:var(--muted);font-weight:500"> ops/s</span></div></div>
+            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#3DBE8B;background:rgba(61,190,139,.12);padding:4px 10px;border-radius:7px">▲ 12.4%</span>
+          </div>
+          <div style="display:flex;align-items:flex-end;gap:9px;height:130px;padding:14px;background:var(--bg);border-radius:12px;border:1px solid var(--line)">
+            <div style="flex:1;height:40%;background:var(--teal2);border-radius:4px 4px 0 0;transform-origin:bottom;animation:vcbar .6s ease both"></div>
+            <div style="flex:1;height:62%;background:var(--teal2);border-radius:4px 4px 0 0;transform-origin:bottom;animation:vcbar .6s ease both .05s"></div>
+            <div style="flex:1;height:50%;background:var(--teal2);border-radius:4px 4px 0 0;transform-origin:bottom;animation:vcbar .6s ease both .1s"></div>
+            <div style="flex:1;height:78%;background:var(--teal);border-radius:4px 4px 0 0;transform-origin:bottom;animation:vcbar .6s ease both .15s"></div>
+            <div style="flex:1;height:66%;background:var(--teal2);border-radius:4px 4px 0 0;transform-origin:bottom;animation:vcbar .6s ease both .2s"></div>
+            <div style="flex:1;height:92%;background:var(--teal);border-radius:4px 4px 0 0;transform-origin:bottom;animation:vcbar .6s ease both .25s"></div>
+            <div style="flex:1;height:100%;background:var(--gold);border-radius:4px 4px 0 0;transform-origin:bottom;animation:vcbar .6s ease both .3s"></div>
+          </div>
+          <div style="display:flex;gap:10px;margin-top:16px">
+            <div style="flex:1;padding:12px 14px;background:var(--panel2);border-radius:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)">Uptime</div><div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;color:var(--gold)">99.99%</div></div>
+            <div style="flex:1;padding:12px 14px;background:var(--panel2);border-radius:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)">Latency</div><div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;color:var(--silver)">24ms</div></div>
+            <div style="flex:1;padding:12px 14px;background:var(--panel2);border-radius:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)">Regions</div><div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;color:var(--text)">40+</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ HERO C ============ -->
+  <sc-if value="{{ heroC }}" hint-placeholder-val="{{ false }}">
+  <div style="max-width:1200px;margin:0 auto;padding:104px 40px 90px">
+    <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:34px">Vercodex — applied software for progress</div>
+    <h1 style="font-family:'Archivo',sans-serif;font-weight:900;font-size:96px;line-height:0.98;letter-spacing:-0.04em;text-wrap:balance;max-width:14ch">We build the systems progress <span style="color:var(--teal)">runs on.</span></h1>
+    <div style="margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;border-top:1px solid var(--line);padding-top:36px">
+      <p style="font-size:18px;line-height:1.6;color:var(--muted);max-width:46ch">For the industries that can't afford friction. We design, build and instrument the applications that turn effort into measurable advancement.</p>
+      <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start">
+        <sc-if value="{{ subscribed }}" hint-placeholder-val="{{ false }}">
+          <div style="display:inline-flex;align-items:center;gap:10px;background:var(--tealSoft);border:1px solid var(--teal2);padding:14px 22px;border-radius:12px;font-size:15px"><span style="width:20px;height:20px;border-radius:50%;background:var(--teal);color:#0c1416;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">✓</span>You're on the list — we'll be in touch.</div>
+        </sc-if>
+        <sc-if value="{{ notSubscribed }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex;gap:10px;width:100%;max-width:420px;background:var(--panel);border:1px solid var(--line);padding:7px 7px 7px 8px;border-radius:14px">
+            <input value="{{ email }}" oninput="{{ setEmail }}" placeholder="you@company.com" style="font-family:'IBM Plex Sans';font-size:15px;color:var(--text);background:transparent;border:none;outline:none;padding:11px 14px;flex:1">
+            <button onclick="{{ submitEmail }}" style="font-family:'IBM Plex Sans';font-weight:600;font-size:15px;color:#0c1416;background:var(--teal);border:none;padding:11px 24px;border-radius:9px;cursor:pointer;white-space:nowrap">Notify me</button>
+          </div>
+        </sc-if>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)">Get product updates &amp; early access.</span>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ SOCIAL PROOF ============ -->
+  <div style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--panel)">
+    <div style="max-width:1200px;margin:0 auto;padding:34px 40px;display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:center">
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);flex:none">Building for teams at</span>
+      <sc-for list="{{ logos }}" as="l" hint-placeholder-count="6">
+        <span style="font-family:'Archivo',sans-serif;font-weight:700;font-size:17px;letter-spacing:0.02em;color:var(--silver);opacity:.62">{{ l.name }}</span>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ============ FEATURES ============ -->
+  <div id="features" style="max-width:1200px;margin:0 auto;padding:104px 40px">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:48px;flex-wrap:wrap">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px">Platform</div>
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:42px;line-height:1.06;letter-spacing:-0.025em;max-width:18ch">Everything built to compound, nothing built to impress.</h2>
+      </div>
+      <p style="font-size:15px;line-height:1.6;color:var(--muted);max-width:38ch">Each application ships with the foundations the world's most demanding sectors require — from day one.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <sc-for list="{{ features }}" as="f" hint-placeholder-count="6">
+        <div style="border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:28px;display:flex;flex-direction:column;gap:12px" style-hover="border-color:var(--teal2)">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold)">{{ f.num }}</span>
+          <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.01em">{{ f.title }}</span>
+          <span style="font-size:14px;line-height:1.6;color:var(--muted)">{{ f.body }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ============ SHOWCASE ============ -->
+  <div style="border-top:1px solid var(--line);background:var(--panel)">
+    <div style="max-width:1200px;margin:0 auto;padding:104px 40px;display:grid;grid-template-columns:0.95fr 1.05fr;gap:64px;align-items:center">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--teal);margin-bottom:14px">The product</div>
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:40px;line-height:1.07;letter-spacing:-0.025em;max-width:16ch">Operations you can see, measure and trust.</h2>
+        <p style="margin-top:20px;font-size:16px;line-height:1.65;color:var(--muted);max-width:46ch">Every system we ship is instrumented end to end. Real-time throughput, uptime and cost — surfaced where the decisions actually get made.</p>
+        <div style="margin-top:28px;display:flex;flex-direction:column;gap:16px">
+          <sc-for list="{{ showcasePoints }}" as="p" hint-placeholder-count="3">
+            <div style="display:flex;gap:13px;align-items:flex-start">
+              <span style="width:22px;height:22px;border-radius:7px;background:var(--tealSoft);border:1px solid var(--teal2);display:flex;align-items:center;justify-content:center;flex:none;margin-top:1px"><span style="width:7px;height:7px;border-radius:50%;background:var(--teal)"></span></span>
+              <span style="font-size:15px;line-height:1.5;color:var(--text)">{{ p.text }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="border:1px solid var(--line);border-radius:18px;background:var(--bg);box-shadow:0 30px 70px rgba(0,0,0,.5);overflow:hidden">
+        <div style="display:flex;align-items:center;gap:7px;padding:14px 18px;border-bottom:1px solid var(--line)">
+          <span style="width:10px;height:10px;border-radius:50%;background:#D2604A"></span><span style="width:10px;height:10px;border-radius:50%;background:var(--gold)"></span><span style="width:10px;height:10px;border-radius:50%;background:#3DBE8B"></span>
+          <span style="margin-left:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)">vercodex / control</span>
+        </div>
+        <div style="padding:24px">
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px">
+            <div style="padding:14px;background:var(--panel);border:1px solid var(--line);border-radius:12px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em">Throughput</div><div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:22px;color:var(--teal)">2.84M</div></div>
+            <div style="padding:14px;background:var(--panel);border:1px solid var(--line);border-radius:12px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em">Uptime</div><div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:22px;color:var(--gold)">99.99%</div></div>
+            <div style="padding:14px;background:var(--panel);border:1px solid var(--line);border-radius:12px"><div style="font-family:'IBM Plex Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em">Saved/wk</div><div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:22px;color:var(--silver)">11h</div></div>
+          </div>
+          <div style="display:flex;align-items:flex-end;gap:10px;height:150px;padding:16px;background:var(--panel);border-radius:12px;border:1px solid var(--line)">
+            <div style="flex:1;height:35%;background:var(--teal2);border-radius:4px 4px 0 0"></div>
+            <div style="flex:1;height:55%;background:var(--teal2);border-radius:4px 4px 0 0"></div>
+            <div style="flex:1;height:45%;background:var(--teal2);border-radius:4px 4px 0 0"></div>
+            <div style="flex:1;height:70%;background:var(--teal);border-radius:4px 4px 0 0"></div>
+            <div style="flex:1;height:60%;background:var(--teal2);border-radius:4px 4px 0 0"></div>
+            <div style="flex:1;height:85%;background:var(--teal);border-radius:4px 4px 0 0"></div>
+            <div style="flex:1;height:74%;background:var(--teal2);border-radius:4px 4px 0 0"></div>
+            <div style="flex:1;height:100%;background:var(--gold);border-radius:4px 4px 0 0"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <div id="industries" style="max-width:1200px;margin:0 auto;padding:104px 40px">
+    <div style="margin-bottom:48px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px">How we work</div>
+      <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:42px;line-height:1.06;letter-spacing:-0.025em;max-width:20ch">From friction to compounding output in four moves.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <div style="border-top:2px solid var(--teal);padding-top:22px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:34px;color:var(--teal);line-height:1">{{ s.num }}</span>
+          <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:18px;letter-spacing:-0.01em">{{ s.title }}</span>
+          <span style="font-size:14px;line-height:1.6;color:var(--muted)">{{ s.body }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ============ METRICS ============ -->
+  <div style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(160deg,var(--teal2),var(--bg))">
+    <div style="max-width:1200px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px">
+      <sc-for list="{{ metrics }}" as="m" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:52px;line-height:1;letter-spacing:-0.03em;color:var(--text)">{{ m.value }}</span>
+          <span style="font-size:14px;line-height:1.5;color:#cfe6ea">{{ m.label }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ============ PRICING / ENGAGEMENTS ============ -->
+  <div id="pricing" style="max-width:1200px;margin:0 auto;padding:104px 40px">
+    <div style="text-align:center;margin-bottom:48px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px">Engagements</div>
+      <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:42px;line-height:1.06;letter-spacing:-0.025em">Start small. Scale as the gains compound.</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch">
+
+      <div style="border:1px solid var(--line);border-radius:18px;background:var(--panel);padding:32px;display:flex;flex-direction:column;gap:22px">
+        <div>
+          <div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:20px">Pilot</div>
+          <div style="font-size:14px;color:var(--muted);margin-top:6px">One focused application, shipped fast.</div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:6px"><span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:38px">6 wks</span><span style="font-size:14px;color:var(--muted)">to live</span></div>
+        <div style="height:1px;background:var(--line)"></div>
+        <div style="display:flex;flex-direction:column;gap:12px;flex:1">
+          <sc-for list="{{ planPilot }}" as="i" hint-placeholder-count="4"><div style="display:flex;gap:10px;font-size:14px;color:var(--text)"><span style="color:var(--teal);flex:none">✓</span>{{ i.t }}</div></sc-for>
+        </div>
+        <a href="#cta" style="text-align:center;font-family:'IBM Plex Sans';font-weight:600;font-size:14px;color:var(--text);background:var(--panel2);border:1px solid var(--line);padding:13px;border-radius:11px;cursor:pointer;text-decoration:none" style-hover="border-color:var(--silver)">Start a pilot</a>
+      </div>
+
+      <div style="border:1px solid var(--teal);border-radius:18px;background:linear-gradient(170deg,var(--tealSoft),var(--panel));padding:32px;display:flex;flex-direction:column;gap:22px;position:relative;box-shadow:0 24px 60px rgba(0,0,0,.45)">
+        <span style="position:absolute;top:-12px;left:32px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:#0c1416;background:var(--teal);padding:5px 12px;border-radius:999px">Most chosen</span>
+        <div>
+          <div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:20px">Partner</div>
+          <div style="font-size:14px;color:var(--muted);margin-top:6px">An embedded team building your roadmap.</div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:6px"><span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:38px;color:var(--teal)">Ongoing</span></div>
+        <div style="height:1px;background:var(--teal2)"></div>
+        <div style="display:flex;flex-direction:column;gap:12px;flex:1">
+          <sc-for list="{{ planPartner }}" as="i" hint-placeholder-count="4"><div style="display:flex;gap:10px;font-size:14px;color:var(--text)"><span style="color:var(--teal);flex:none">✓</span>{{ i.t }}</div></sc-for>
+        </div>
+        <a href="#cta" style="text-align:center;font-family:'IBM Plex Sans';font-weight:600;font-size:14px;color:#0c1416;background:var(--teal);border:none;padding:13px;border-radius:11px;cursor:pointer;text-decoration:none" style-hover="filter:brightness(1.08)">Become a partner</a>
+      </div>
+
+      <div style="border:1px solid var(--line);border-radius:18px;background:var(--panel);padding:32px;display:flex;flex-direction:column;gap:22px">
+        <div>
+          <div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:20px">Enterprise</div>
+          <div style="font-size:14px;color:var(--muted);margin-top:6px">Org-wide systems &amp; dedicated infra.</div>
+        </div>
+        <div style="display:flex;align-items:baseline;gap:6px"><span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:38px;color:var(--gold)">Custom</span></div>
+        <div style="height:1px;background:var(--line)"></div>
+        <div style="display:flex;flex-direction:column;gap:12px;flex:1">
+          <sc-for list="{{ planEnterprise }}" as="i" hint-placeholder-count="4"><div style="display:flex;gap:10px;font-size:14px;color:var(--text)"><span style="color:var(--gold);flex:none">✓</span>{{ i.t }}</div></sc-for>
+        </div>
+        <a href="#cta" style="text-align:center;font-family:'IBM Plex Sans';font-weight:600;font-size:14px;color:var(--gold);background:transparent;border:1px solid var(--gold);padding:13px;border-radius:11px;cursor:pointer;text-decoration:none" style-hover="background:var(--goldSoft)">Talk to us</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <div style="border-top:1px solid var(--line);background:var(--panel)">
+    <div style="max-width:1200px;margin:0 auto;padding:104px 40px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:40px">Proof, not promises</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <sc-for list="{{ testimonials }}" as="q" hint-placeholder-count="2">
+          <div style="border:1px solid var(--line);border-radius:18px;background:var(--bg);padding:36px;display:flex;flex-direction:column;gap:24px">
+            <p style="font-family:'Archivo',sans-serif;font-weight:500;font-size:24px;line-height:1.4;letter-spacing:-0.01em;color:var(--text);text-wrap:pretty">“{{ q.quote }}”</p>
+            <div style="display:flex;align-items:center;gap:13px;margin-top:auto">
+              <span style="width:40px;height:40px;border-radius:11px;background:var(--tealSoft);border:1px solid var(--teal2);display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:700;color:var(--teal);flex:none">{{ q.initial }}</span>
+              <div><div style="font-size:14px;font-weight:600;color:var(--text)">{{ q.name }}</div><div style="font-size:13px;color:var(--muted)">{{ q.role }}</div></div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ INTEGRATIONS ============ -->
+  <div style="max-width:1200px;margin:0 auto;padding:104px 40px">
+    <div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--teal);margin-bottom:14px">Fits your stack</div>
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:38px;line-height:1.08;letter-spacing:-0.025em;max-width:16ch">We build on top of what you already run.</h2>
+        <p style="margin-top:18px;font-size:15px;line-height:1.65;color:var(--muted);max-width:42ch">No rip-and-replace. We connect to your clouds, warehouses and pipelines and meet your data where it lives.</p>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <sc-for list="{{ integrations }}" as="g" hint-placeholder-count="10">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text);background:var(--panel);border:1px solid var(--line);padding:12px 18px;border-radius:11px" style-hover="border-color:var(--teal2)">{{ g.name }}</span>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FAQ ============ -->
+  <div id="faq" style="max-width:860px;margin:0 auto;padding:60px 40px 104px">
+    <div style="text-align:center;margin-bottom:44px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px">Questions</div>
+      <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:38px;letter-spacing:-0.025em">The things teams ask first.</h2>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
+        <div style="border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden">
+          <button onclick="{{ q.toggle }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:transparent;border:none;cursor:pointer;text-align:left;font-family:'Archivo',sans-serif;font-weight:600;font-size:17px;color:var(--text)">
+            <span>{{ q.question }}</span>
+            <span style="{{ q.iconStyle }}">+</span>
+          </button>
+          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:0 24px 22px;font-size:15px;line-height:1.65;color:var(--muted)">{{ q.answer }}</div>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- ============ FINAL CTA ============ -->
+  <div id="cta" style="max-width:1200px;margin:0 auto;padding:0 40px 104px">
+    <div style="position:relative;border:1px solid var(--teal2);border-radius:24px;background:linear-gradient(160deg,var(--teal2),var(--bg));padding:72px 48px;text-align:center;overflow:hidden">
+      <div style="position:absolute;top:-80px;right:-60px;opacity:.08;pointer-events:none">
+        <svg width="360" height="360" viewBox="-120 -120 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round">
+          <g transform="rotate(0)" fill="var(--silver)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+          <g transform="rotate(60)" fill="var(--gold)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+          <g transform="rotate(120)" fill="var(--gold)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+          <g transform="rotate(180)" fill="var(--teal)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+          <g transform="rotate(240)" fill="var(--teal)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+          <g transform="rotate(300)" fill="var(--silver)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+        </svg>
+      </div>
+      <div style="position:relative">
+        <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:48px;line-height:1.05;letter-spacing:-0.03em;text-wrap:balance;max-width:18ch;margin:0 auto">Ready to move your work forward?</h2>
+        <p style="margin:18px auto 0;font-size:17px;line-height:1.6;color:#d4eaee;max-width:50ch">Leave your email. We'll send product updates, early access and the occasional note on what we're building next.</p>
+        <div style="margin-top:34px;display:flex;flex-direction:column;align-items:center;gap:14px">
+          <sc-if value="{{ subscribed }}" hint-placeholder-val="{{ false }}">
+            <div style="display:inline-flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--teal2);padding:16px 26px;border-radius:13px;font-size:16px"><span style="width:22px;height:22px;border-radius:50%;background:var(--teal);color:#0c1416;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">✓</span>You're on the list — talk soon.</div>
+          </sc-if>
+          <sc-if value="{{ notSubscribed }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;gap:10px;background:var(--bg);border:1px solid var(--line);padding:8px 8px 8px 10px;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.4)">
+              <input value="{{ email }}" oninput="{{ setEmail }}" placeholder="you@company.com" style="font-family:'IBM Plex Sans';font-size:16px;color:var(--text);background:transparent;border:none;outline:none;padding:12px 16px;width:300px">
+              <button onclick="{{ submitEmail }}" style="font-family:'IBM Plex Sans';font-weight:600;font-size:16px;color:#0c1416;background:var(--teal);border:none;padding:12px 28px;border-radius:10px;cursor:pointer;white-space:nowrap" style-hover="filter:brightness(1.08)">Notify me</button>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <div style="border-top:1px solid var(--line);background:var(--panel)">
+    <div style="max-width:1200px;margin:0 auto;padding:56px 40px 40px">
+      <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+            <svg width="34" height="34" viewBox="-120 -120 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="var(--panel)" stroke-width="5" stroke-linejoin="round" style="display:block">
+              <g transform="rotate(0)" fill="var(--silver)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+              <g transform="rotate(60)" fill="var(--gold)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+              <g transform="rotate(120)" fill="var(--gold)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+              <g transform="rotate(180)" fill="var(--teal)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+              <g transform="rotate(240)" fill="var(--teal)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+              <g transform="rotate(300)" fill="var(--silver)"><polygon points="4,-30 17,-60 17,-108 4,-108"></polygon><polygon points="-4,-30 -17,-60 -17,-108 -4,-108"></polygon></g>
+            </svg>
+            <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:18px">VERCODEX</span>
+          </div>
+          <p style="font-size:14px;line-height:1.6;color:var(--muted);max-width:30ch">Applied software for the industries that move humanity forward.</p>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px">Platform</div>
+          <a href="#features" style="font-size:14px;color:var(--text);text-decoration:none;opacity:.8" style-hover="opacity:1;color:var(--teal)">Capabilities</a>
+          <a href="#industries" style="font-size:14px;color:var(--text);text-decoration:none;opacity:.8" style-hover="opacity:1;color:var(--teal)">How we work</a>
+          <a href="#pricing" style="font-size:14px;color:var(--text);text-decoration:none;opacity:.8" style-hover="opacity:1;color:var(--teal)">Engagements</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px">Company</div>
+          <a href="#" style="font-size:14px;color:var(--text);text-decoration:none;opacity:.8" style-hover="opacity:1;color:var(--teal)">About</a>
+          <a href="#" style="font-size:14px;color:var(--text);text-decoration:none;opacity:.8" style-hover="opacity:1;color:var(--teal)">Careers</a>
+          <a href="#cta" style="font-size:14px;color:var(--text);text-decoration:none;opacity:.8" style-hover="opacity:1;color:var(--teal)">Contact</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:11px">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:4px">Legal</div>
+          <a href="#" style="font-size:14px;color:var(--text);text-decoration:none;opacity:.8" style-hover="opacity:1;color:var(--teal)">Privacy</a>
+          <a href="#" style="font-size:14px;color:var(--text);text-decoration:none;opacity:.8" style-hover="opacity:1;color:var(--teal)">Terms</a>
+          <a href="#" style="font-size:14px;color:var(--text);text-decoration:none;opacity:.8" style-hover="opacity:1;color:var(--teal)">Security</a>
+        </div>
+      </div>
+      <div style="margin-top:44px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)">© 2026 Vercodex. All rights reserved.</span>
+        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)">Built on the Vercodex design system.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ HERO SWITCHER (floating) ============ -->
+  <div style="position:fixed;bottom:22px;right:22px;z-index:100;display:flex;align-items:center;gap:10px;background:color-mix(in srgb, var(--panel) 92%, transparent);backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:13px;padding:8px 10px;box-shadow:0 12px 30px rgba(0,0,0,.5)">
+    <span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);padding-left:4px">Hero</span>
+    <div style="display:flex;gap:4px">
+      <sc-for list="{{ heroOptions }}" as="h" hint-placeholder-count="3">
+        <button onclick="{{ h.select }}" style="{{ h.style }}">{{ h.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+
+</div>
+
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:3400},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;graphite&quot;,&quot;midnight&quot;,&quot;ember&quot;],&quot;default&quot;:&quot;graphite&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Brand&quot;},&quot;heroVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;],&quot;default&quot;:&quot;a&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
+class Component extends DCLogic {
+  constructor(props){
+    super(props);
+    this.rootRef = React.createRef();
+    this.state = {
+      theme: props.theme || 'graphite',
+      hero: props.heroVariant || 'a',
+      email: '',
+      subscribed: false,
+      openFaq: 0
+    };
+    this.palettes = {
+      graphite: { bg:'#15181B', panel:'#1C2127', panel2:'#232A30', line:'#2C343B', text:'#E9EBED', muted:'#98A1A8', teal:'#2E97A8', teal2:'#1E6776', tealSoft:'#1B3940', gold:'#C4952D', goldSoft:'#3E331A', silver:'#B1B1AE' },
+      midnight: { bg:'#0F141A', panel:'#161D25', panel2:'#1D2630', line:'#26313C', text:'#EAEEF2', muted:'#8E9AA6', teal:'#34B0C2', teal2:'#1F6B79', tealSoft:'#163C45', gold:'#CFA23A', goldSoft:'#3B3119', silver:'#AEB4B8' },
+      ember: { bg:'#17130F', panel:'#1F1A14', panel2:'#27211A', line:'#332B22', text:'#EDE8E2', muted:'#A89C8E', teal:'#2E97A8', teal2:'#21525A', tealSoft:'#173B40', gold:'#D6A323', goldSoft:'#3F3216', silver:'#B4AFA6' }
+    };
+  }
+  componentDidMount(){ this.apply(this.state.theme); }
+  componentDidUpdate(prev){
+    if(prev.theme !== this.props.theme && this.props.theme){ this.setTheme(this.props.theme); }
+    if(prev.heroVariant !== this.props.heroVariant && this.props.heroVariant){ this.setState({ hero: this.props.heroVariant }); }
+  }
+  apply(name){
+    const p = this.palettes[name]; const el = this.rootRef.current;
+    if(!p || !el) return;
+    Object.keys(p).forEach(k => el.style.setProperty('--'+k, p[k]));
+    el.style.background = p.bg;
+  }
+  setTheme(name){ this.setState({ theme:name }, () => this.apply(name)); }
+  renderVals(){
+    const cur = this.state.theme;
+    const themes = [
+      { id:'graphite', label:'Graphite', dot:'◆' },
+      { id:'midnight', label:'Midnight', dot:'◆' },
+      { id:'ember', label:'Ember', dot:'◆' }
+    ].map(t => ({
+      label: t.label,
+      dot: t.dot,
+      select: () => this.setTheme(t.id),
+      style: 'font-size:11px;cursor:pointer;border:none;width:26px;height:26px;border-radius:7px;transition:all .15s;' +
+        (cur===t.id ? 'background:var(--teal);color:#0c1416;' : 'background:transparent;color:var(--muted);')
+    }));
+
+    const heroOptions = [
+      { id:'a', label:'A' }, { id:'b', label:'B' }, { id:'c', label:'C' }
+    ].map(h => ({
+      label: h.label,
+      select: () => this.setState({ hero: h.id }),
+      style: 'font-family:\'IBM Plex Mono\',monospace;font-size:12px;font-weight:500;cursor:pointer;border:none;width:30px;height:28px;border-radius:8px;transition:all .15s;' +
+        (this.state.hero===h.id ? 'background:var(--teal);color:#0c1416;' : 'background:var(--panel2);color:var(--muted);')
+    }));
+
+    const features = [
+      { num:'01', title:'Built to scale', body:'Systems engineered for millions of operations a second — without breaking stride or budget.' },
+      { num:'02', title:'Measurable by default', body:'Every deployment ships with the metrics that prove it actually moved the needle.' },
+      { num:'03', title:'Industry-grade security', body:'Audit trails, isolation and compliance built in from the very first commit.' },
+      { num:'04', title:'Runs anywhere', body:'Any region, any cloud, close to where the real work happens. No lock-in.' },
+      { num:'05', title:'Human-centered', body:'Interfaces your team actually wants to use — not ones they merely tolerate.' },
+      { num:'06', title:'Always forward', body:'Continuous delivery that compounds. Every cycle leaves you measurably further ahead.' }
+    ];
+
+    const showcasePoints = [
+      { text:'Live throughput, uptime and cost in a single pane of glass.' },
+      { text:'Alerting tuned to your thresholds, not generic defaults.' },
+      { text:'Exportable reports that prove ROI to the people who fund the work.' }
+    ];
+
+    const steps = [
+      { num:'01', title:'Map the friction', body:'We study where your operation loses time, money or momentum.' },
+      { num:'02', title:'Build the system', body:'A focused application designed around your real workflow.' },
+      { num:'03', title:'Deploy & measure', body:'Ship to production with instrumentation live from day one.' },
+      { num:'04', title:'Compound the gains', body:'Iterate on the metrics until progress becomes the default.' }
+    ];
+
+    const metrics = [
+      { value:'99.99%', label:'Uptime across deployed systems' },
+      { value:'2.84M', label:'Operations per second at peak' },
+      { value:'12', label:'Core industries served' },
+      { value:'40+', label:'Countries deployed in' }
+    ];
+
+    const planPilot = [
+      { t:'One scoped application' }, { t:'Live in ~6 weeks' }, { t:'Full instrumentation' }, { t:'You own the code' }
+    ];
+    const planPartner = [
+      { t:'Embedded product team' }, { t:'Continuous roadmap delivery' }, { t:'Priority support & SLAs' }, { t:'Quarterly outcome reviews' }
+    ];
+    const planEnterprise = [
+      { t:'Org-wide system design' }, { t:'Dedicated infrastructure' }, { t:'Compliance & audit support' }, { t:'Named solutions architect' }
+    ];
+
+    const testimonials = [
+      { quote:'Vercodex rebuilt our dispatch system and we recovered eleven hours a week, per operator. It paid for itself in a quarter.', initial:'M', name:'Operations Lead', role:'Energy & logistics' },
+      { quote:'They shipped in six weeks what our previous vendor couldn\'t deliver in a year — and we can actually measure the gain.', initial:'A', name:'Chief Technology Officer', role:'Capital markets' }
+    ];
+
+    const integrations = ['AWS','Google Cloud','Azure','Snowflake','Databricks','PostgreSQL','Apache Kafka','Stripe','Datadog','Twilio','Salesforce','dbt'].map(n => ({ name:n }));
+
+    const logos = ['MERIDIAN ENERGY','ATLAS CAPITAL','HELION BIO','NORTHWIND AERO','VANTA LOGISTICS','ORBITAL MFG'].map(n => ({ name:n }));
+
+    const faqData = [
+      { question:'What kinds of companies do you work with?', answer:'Organizations in industries where technology directly moves the bottom line — energy, capital markets, aerospace, life sciences and advanced manufacturing. If friction is costing you time or money, we can help.' },
+      { question:'Do you build from scratch or on top of our stack?', answer:'Both. We frequently build new applications, and just as often layer focused systems on top of the clouds, warehouses and pipelines you already run. No rip-and-replace.' },
+      { question:'How fast can we see something live?', answer:'Pilots typically reach production in around six weeks. We instrument from day one, so you can measure impact as soon as it ships.' },
+      { question:'Who owns the code we pay for?', answer:'You do. Full ownership, full source, no lock-in. We build it to outlast our engagement.' },
+      { question:'How do you measure success?', answer:'We agree on the metrics that matter before we write a line of code — throughput, hours saved, cost, uptime — and report against them continuously.' }
+    ];
+    const faqs = faqData.map((q, i) => ({
+      question: q.question,
+      answer: q.answer,
+      open: this.state.openFaq === i,
+      toggle: () => this.setState(s => ({ openFaq: s.openFaq === i ? -1 : i })),
+      iconStyle: 'font-family:\'Archivo\',sans-serif;font-weight:600;font-size:24px;color:var(--teal);flex:none;transition:transform .2s;transform:rotate(' + (this.state.openFaq===i ? '45deg' : '0deg') + ')'
+    }));
+
+    return {
+      rootRef: this.rootRef,
+      themes,
+      heroOptions,
+      heroA: this.state.hero === 'a',
+      heroB: this.state.hero === 'b',
+      heroC: this.state.hero === 'c',
+      email: this.state.email,
+      subscribed: this.state.subscribed,
+      notSubscribed: !this.state.subscribed,
+      setEmail: (e) => this.setState({ email: e.target.value }),
+      submitEmail: () => { if(/.+@.+\..+/.test(this.state.email)) this.setState({ subscribed: true }); },
+      features, showcasePoints, steps, metrics,
+      planPilot, planPartner, planEnterprise,
+      testimonials, integrations, logos, faqs
+    };
+  }
+}
+</script>
+
+
+<script src="js/main.js"></script>
+</body></html>
