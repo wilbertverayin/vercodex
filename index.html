@@ -69,56 +69,6 @@
       </div>
     </div>
   </div>
-  </sc-if>
-        <sc-if value="{{ notSubscribed }}" hint-placeholder-val="{{ true }}">
-          <div style="display:inline-flex;gap:10px;background:var(--panel);border:1px solid var(--line);padding:7px 7px 7px 8px;border-radius:14px">
-            <input value="{{ email }}" oninput="{{ setEmail }}" placeholder="you@company.com" style="font-family:'IBM Plex Sans';font-size:15px;color:var(--text);background:transparent;border:none;outline:none;padding:11px 14px;width:240px">
-            <button onclick="{{ submitEmail }}" style="font-family:'IBM Plex Sans';font-weight:600;font-size:15px;color:#0c1416;background:var(--teal);border:none;padding:11px 24px;border-radius:9px;cursor:pointer;white-space:nowrap">Notify me</button>
-          </div>
-        </sc-if>
-      </div>
-    </div>
-    <div style="position:relative">
-      <div style="border:1px solid var(--line);border-radius:18px;background:var(--panel);box-shadow:0 30px 70px rgba(0,0,0,.5);overflow:hidden">
-        <div style="display:flex;align-items:center;gap:7px;padding:14px 18px;border-bottom:1px solid var(--line)">
-          <span style="width:10px;height:10px;border-radius:50%;background:#D2604A"></span><span style="width:10px;height:10px;border-radius:50%;background:var(--gold)"></span><span style="width:10px;height:10px;border-radius:50%;background:#3DBE8B"></span>
-          <span style="margin-left:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)">vercodex / operations</span>
-        </div>
-        <div style="padding:22px">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:18px">
-            <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em">Throughput</div><div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:34px;color:var(--teal);line-height:1.1">2.84M<span style="font-size:15px;color:var(--muted);font-weight:500"> ops/s</span></div></div>
-            <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#3DBE8B;background:rgba(61,190,139,.12);padding:4px 10px;border-radius:7px">▲ 12.4%</span>
-          </div>
-          <div style="display:flex;align-items:flex-end;gap:9px;height:130px;padding:14px;background:var(--bg);border-radius:12px;border:1px solid var(--line)">
-            <div style="flex:1;height:40%;background:var(--teal2);border-radius:4px 4px 0 0;transform-origin:bottom;animation:vcbar .6s ease both"></div>
-            <div style="flex:1;height:62%;background:var(--teal2);border-radius:4px 4px 0 0;transform-origin:bottom;animation:vcbar .6s ease both .05s"></div>
-            <div style="flex:1;height:50%;background:var(--teal2);border-radius:4px 4px 0 0;transform-origin:bottom;animation:vcbar .6s ease both .1s"></div>
-            <div style="flex:1;height:78%;background:var(--teal);border-radius:4px 4px 0 0;transform-origin:bottom;animation:vcbar .6s ease both .15s"></div>
-            <div style="flex:1;height:66%;background:var(--teal2);border-radius:4px 4px 0 0;transform-origin:bottom;animation:vcbar .6s ease both .2s"></div>
-            <div style="flex:1;height:92%;background:var(--teal);border-radius:4px 4px 0 0;transform-origin:bottom;animation:vcbar .6s ease both .25s"></div>
-            <div style="flex:1;height:100%;background:var(--gold);border-radius:4px 4px 0 0;transform-origin:bottom;animation:vcbar .6s ease both .3s"></div>
-          </div>
-          <div style="display:flex;gap:10px;margin-top:16px">
-            <div style="flex:1;padding:12px 14px;background:var(--panel2);border-radius:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)">Uptime</div><div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;color:var(--gold)">99.99%</div></div>
-            <div style="flex:1;padding:12px 14px;background:var(--panel2);border-radius:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)">Latency</div><div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;color:var(--silver)">24ms</div></div>
-            <div style="flex:1;padding:12px 14px;background:var(--panel2);border-radius:10px"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted)">Regions</div><div style="font-family:'Archivo',sans-serif;font-weight:700;font-size:18px;color:var(--text)">40+</div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  </sc-if>
-        <sc-if value="{{ notSubscribed }}" hint-placeholder-val="{{ true }}">
-          <div style="display:flex;gap:10px;width:100%;max-width:420px;background:var(--panel);border:1px solid var(--line);padding:7px 7px 7px 8px;border-radius:14px">
-            <input value="{{ email }}" oninput="{{ setEmail }}" placeholder="you@company.com" style="font-family:'IBM Plex Sans';font-size:15px;color:var(--text);background:transparent;border:none;outline:none;padding:11px 14px;flex:1">
-            <button onclick="{{ submitEmail }}" style="font-family:'IBM Plex Sans';font-weight:600;font-size:15px;color:#0c1416;background:var(--teal);border:none;padding:11px 24px;border-radius:9px;cursor:pointer;white-space:nowrap">Notify me</button>
-          </div>
-        </sc-if>
-        <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)">Get product updates &amp; early access.</span>
-      </div>
-    </div>
-  </div>
-
   <!-- ============ FEATURES ============ -->
   <div id="features" data-animate style="max-width:1200px;margin:0 auto;padding:104px 40px">
     <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:48px;flex-wrap:wrap">
