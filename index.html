@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<div ref="{{ rootRef }}" style="--bg:#15181B;--panel:#1C2127;--panel2:#232A30;--line:#2C343B;--text:#E9EBED;--muted:#98A1A8;--teal:#2E97A8;--teal2:#1E6776;--tealSoft:#1B3940;--gold:#C4952D;--goldSoft:#3E331A;--silver:#B1B1AE;background:var(--bg);min-height:100vh;width:100%;font-family:'IBM Plex Sans',sans-serif;color:var(--text);overflow-x:hidden">
+<div style="--bg:#15181B;--panel:#1C2127;--panel2:#232A30;--line:#2C343B;--text:#E9EBED;--muted:#98A1A8;--teal:#2E97A8;--teal2:#1E6776;--tealSoft:#1B3940;--gold:#C4952D;--goldSoft:#3E331A;--silver:#B1B1AE;background:var(--bg);min-height:100vh;width:100%;font-family:'IBM Plex Sans',sans-serif;color:var(--text);overflow-x:hidden">
 
   <!-- ============ NAV ============ -->
   <div style="position:sticky;top:0;z-index:50;background:color-mix(in srgb, var(--bg) 82%, transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)">
@@ -27,10 +27,9 @@
         <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:19px;letter-spacing:-0.01em">VERCODEX</span>
       </div>
       <div style="display:flex;align-items:center;gap:30px">
-        <a href="#features" style="font-size:14px;color:var(--muted);text-decoration:none" style-hover="color:var(--text)">Platform</a>
-        <a href="#industries" style="font-size:14px;color:var(--muted);text-decoration:none" style-hover="color:var(--text)">Industries</a>
-        <a href="#pricing" style="font-size:14px;color:var(--muted);text-decoration:none" style-hover="color:var(--text)">Engagements</a>
-        <a href="#faq" style="font-size:14px;color:var(--muted);text-decoration:none" style-hover="color:var(--text)">FAQ</a>
+        <a href="#features" class="nav-link" data-section="features" style="font-size:14px;text-decoration:none">Platform</a>
+        <a href="#industries" class="nav-link" data-section="industries" style="font-size:14px;text-decoration:none">Industries</a>
+        <a href="#faq" class="nav-link" data-section="faq" style="font-size:14px;text-decoration:none">FAQ</a>
       </div>
       <div style="display:flex;align-items:center;gap:14px">
         <a href="#cta" style="font-family:'IBM Plex Sans';font-weight:600;font-size:13px;color:#0c1416;background:var(--teal);border:none;padding:10px 18px;border-radius:9px;cursor:pointer;text-decoration:none" style-hover="filter:brightness(1.08)">Get updates</a>
@@ -39,7 +38,8 @@
   </div>
 
   <!-- ============ HERO ============ -->
-  <div style="position:relative;max-width:1200px;margin:0 auto;padding:120px 40px 110px;text-align:center;overflow:hidden">
+  <div id="hero" class="vc-section" style="justify-content:flex-start">
+  <div style="position:relative;max-width:1200px;margin:0 auto;padding:120px 40px 110px;text-align:center;overflow:hidden;width:100%">
     <canvas id="hero-bg" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0"></canvas>
     <div style="display:none">
       <svg width="640" height="640" viewBox="-120 -120 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round" style="display:block;animation:vcfloat 9s ease-in-out infinite">
@@ -52,25 +52,22 @@
       </svg>
     </div>
     <div style="position:relative">
-      <div style="display:inline-flex;align-items:center;gap:9px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);background:var(--panel);padding:7px 15px;border-radius:999px;margin-bottom:30px"><span style="width:6px;height:6px;border-radius:50%;background:var(--teal)"></span>Software for the industries that power progress</div>
+      <div style="display:inline-flex;align-items:center;gap:9px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:1px solid var(--line);background:var(--panel);padding:7px 15px;border-radius:999px;margin-bottom:30px"><span style="width:6px;height:6px;border-radius:50%;background:var(--teal)"></span>For the industries that power progress</div>
       <h1 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:74px;line-height:1.02;letter-spacing:-0.03em;max-width:16ch;margin:0 auto;text-wrap:balance">Move humanity's advancement <span style="color:var(--teal)">forward.</span></h1>
       <p style="margin:26px auto 0;font-size:18px;line-height:1.6;color:var(--muted);max-width:60ch">Vercodex builds the applications that high-stakes industries run on — energy, capital, aerospace, life sciences and advanced manufacturing. Less friction, more output, measurable progress.</p>
       <div style="margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:14px">
-        <sc-if value="{{ subscribed }}" hint-placeholder-val="{{ false }}">
-          <div style="display:flex;align-items:center;gap:10px;background:var(--tealSoft);border:1px solid var(--teal2);padding:14px 22px;border-radius:12px;font-size:15px;color:var(--text)"><span style="width:20px;height:20px;border-radius:50%;background:var(--teal);color:#0c1416;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">✓</span>You're on the list — we'll be in touch.</div>
-        </sc-if>
-        <sc-if value="{{ notSubscribed }}" hint-placeholder-val="{{ true }}">
-          <div style="display:flex;gap:10px;background:var(--panel);border:1px solid var(--line);padding:7px 7px 7px 8px;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.4)">
-            <input value="{{ email }}" oninput="{{ setEmail }}" placeholder="you@company.com" style="font-family:'IBM Plex Sans';font-size:15px;color:var(--text);background:transparent;border:none;outline:none;padding:11px 14px;width:280px">
-            <button onclick="{{ submitEmail }}" style="font-family:'IBM Plex Sans';font-weight:600;font-size:15px;color:#0c1416;background:var(--teal);border:none;padding:11px 24px;border-radius:9px;cursor:pointer;white-space:nowrap" style-hover="filter:brightness(1.08)">Notify me</button>
-          </div>
-        </sc-if>
+        <div id="hero-success" style="display:none;align-items:center;gap:10px;background:var(--tealSoft);border:1px solid var(--teal2);padding:14px 22px;border-radius:12px;font-size:15px;color:var(--text)"><span style="width:20px;height:20px;border-radius:50%;background:var(--teal);color:#0c1416;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">✓</span>You're on the list — we'll be in touch.</div>
+        <div id="hero-form" style="display:flex;gap:10px;background:var(--panel);border:1px solid var(--line);padding:7px 7px 7px 8px;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.4)">
+          <input id="hero-email" type="email" placeholder="you@company.com" style="font-family:'IBM Plex Sans';font-size:15px;color:var(--text);background:transparent;border:none;outline:none;padding:11px 14px;width:280px">
+          <button onclick="vcSubmit('hero')" style="font-family:'IBM Plex Sans';font-weight:600;font-size:15px;color:#0c1416;background:var(--teal);border:none;padding:11px 24px;border-radius:9px;cursor:pointer;white-space:nowrap">Notify me</button>
+        </div>
         <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)">No spam. Product updates and early access only.</span>
       </div>
     </div>
   </div>
+  </div><!-- /hero -->
   <!-- ============ FEATURES ============ -->
-  <div id="features" data-animate style="max-width:1200px;margin:0 auto;padding:104px 40px">
+  <div id="features" class="vc-section" data-animate style="max-width:1200px;margin:0 auto;padding:104px 40px;width:100%">
     <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:48px;flex-wrap:wrap">
       <div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px">Platform</div>
@@ -79,30 +76,59 @@
       <p style="font-size:15px;line-height:1.6;color:var(--muted);max-width:38ch">Each application ships with the foundations the world's most demanding sectors require — from day one.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
-      <sc-for list="{{ features }}" as="f" hint-placeholder-count="6">
-        <div class="vc-card" style="border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:28px;display:flex;flex-direction:column;gap:12px" style-hover="border-color:var(--teal2)">
-          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold)">{{ f.num }}</span>
-          <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.01em">{{ f.title }}</span>
-          <span style="font-size:14px;line-height:1.6;color:var(--muted)">{{ f.body }}</span>
+        <div class="vc-card" style="border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:28px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold)">01</span>
+          <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.01em">Built to scale</span>
+          <span style="font-size:14px;line-height:1.6;color:var(--muted)">Systems engineered for millions of operations a second — without breaking stride or budget.</span>
         </div>
-      </sc-for>
+        <div class="vc-card" style="border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:28px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold)">02</span>
+          <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.01em">Measurable by default</span>
+          <span style="font-size:14px;line-height:1.6;color:var(--muted)">Every deployment ships with the metrics that prove it actually moved the needle.</span>
+        </div>
+        <div class="vc-card" style="border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:28px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold)">03</span>
+          <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.01em">Industry-grade security</span>
+          <span style="font-size:14px;line-height:1.6;color:var(--muted)">Audit trails, isolation and compliance built in from the very first commit.</span>
+        </div>
+        <div class="vc-card" style="border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:28px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold)">04</span>
+          <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.01em">Runs anywhere</span>
+          <span style="font-size:14px;line-height:1.6;color:var(--muted)">Any region, any cloud, close to where the real work happens. No lock-in.</span>
+        </div>
+        <div class="vc-card" style="border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:28px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold)">05</span>
+          <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.01em">Human-centered</span>
+          <span style="font-size:14px;line-height:1.6;color:var(--muted)">Interfaces your team actually wants to use — not ones they merely tolerate.</span>
+        </div>
+        <div class="vc-card" style="border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:28px;display:flex;flex-direction:column;gap:12px">
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--gold)">06</span>
+          <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:20px;letter-spacing:-0.01em">Always forward</span>
+          <span style="font-size:14px;line-height:1.6;color:var(--muted)">Continuous delivery that compounds. Every cycle leaves you measurably further ahead.</span>
+        </div>
     </div>
   </div>
 
   <!-- ============ SHOWCASE ============ -->
-  <div data-animate style="border-top:1px solid var(--line);background:var(--panel)">
+  <div id="showcase" class="vc-section" data-animate style="border-top:1px solid var(--line);background:var(--panel)">
     <div style="max-width:1200px;margin:0 auto;padding:104px 40px;display:grid;grid-template-columns:0.95fr 1.05fr;gap:64px;align-items:center">
       <div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--teal);margin-bottom:14px">The product</div>
         <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:40px;line-height:1.07;letter-spacing:-0.025em;max-width:16ch">Operations you can see, measure and trust.</h2>
         <p style="margin-top:20px;font-size:16px;line-height:1.65;color:var(--muted);max-width:46ch">Every system we ship is instrumented end to end. Real-time throughput, uptime and cost — surfaced where the decisions actually get made.</p>
         <div style="margin-top:28px;display:flex;flex-direction:column;gap:16px">
-          <sc-for list="{{ showcasePoints }}" as="p" hint-placeholder-count="3">
             <div style="display:flex;gap:13px;align-items:flex-start">
               <span style="width:22px;height:22px;border-radius:7px;background:var(--tealSoft);border:1px solid var(--teal2);display:flex;align-items:center;justify-content:center;flex:none;margin-top:1px"><span style="width:7px;height:7px;border-radius:50%;background:var(--teal)"></span></span>
-              <span style="font-size:15px;line-height:1.5;color:var(--text)">{{ p.text }}</span>
+              <span style="font-size:15px;line-height:1.5;color:var(--text)">Live throughput, uptime and cost in a single pane of glass.</span>
             </div>
-          </sc-for>
+            <div style="display:flex;gap:13px;align-items:flex-start">
+              <span style="width:22px;height:22px;border-radius:7px;background:var(--tealSoft);border:1px solid var(--teal2);display:flex;align-items:center;justify-content:center;flex:none;margin-top:1px"><span style="width:7px;height:7px;border-radius:50%;background:var(--teal)"></span></span>
+              <span style="font-size:15px;line-height:1.5;color:var(--text)">Alerting tuned to your thresholds, not generic defaults.</span>
+            </div>
+            <div style="display:flex;gap:13px;align-items:flex-start">
+              <span style="width:22px;height:22px;border-radius:7px;background:var(--tealSoft);border:1px solid var(--teal2);display:flex;align-items:center;justify-content:center;flex:none;margin-top:1px"><span style="width:7px;height:7px;border-radius:50%;background:var(--teal)"></span></span>
+              <span style="font-size:15px;line-height:1.5;color:var(--text)">Exportable reports that prove ROI to the people who fund the work.</span>
+            </div>
         </div>
       </div>
       <div style="border:1px solid var(--line);border-radius:18px;background:var(--bg);box-shadow:0 30px 70px rgba(0,0,0,.5);overflow:hidden">
@@ -132,33 +158,35 @@
   </div>
 
   <!-- ============ HOW IT WORKS ============ -->
-  <div id="industries" style="max-width:1200px;margin:0 auto;padding:104px 40px">
+  <div id="industries" class="vc-section" style="max-width:1200px;margin:0 auto;padding:104px 40px;width:100%">
     <div style="margin-bottom:48px">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px">How we work</div>
       <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:42px;line-height:1.06;letter-spacing:-0.025em;max-width:20ch">From friction to compounding output in four moves.</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
-      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
         <div style="border-top:2px solid var(--teal);padding-top:22px;display:flex;flex-direction:column;gap:10px">
-          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:34px;color:var(--teal);line-height:1">{{ s.num }}</span>
-          <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:18px;letter-spacing:-0.01em">{{ s.title }}</span>
-          <span style="font-size:14px;line-height:1.6;color:var(--muted)">{{ s.body }}</span>
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:34px;color:var(--teal);line-height:1">01</span>
+          <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:18px;letter-spacing:-0.01em">Map the friction</span>
+          <span style="font-size:14px;line-height:1.6;color:var(--muted)">We study where your operation loses time, money or momentum.</span>
         </div>
-      </sc-for>
+        <div style="border-top:2px solid var(--teal);padding-top:22px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:34px;color:var(--teal);line-height:1">02</span>
+          <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:18px;letter-spacing:-0.01em">Build the system</span>
+          <span style="font-size:14px;line-height:1.6;color:var(--muted)">A focused application designed around your real workflow — not a generic template.</span>
+        </div>
+        <div style="border-top:2px solid var(--teal);padding-top:22px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:34px;color:var(--teal);line-height:1">03</span>
+          <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:18px;letter-spacing:-0.01em">Deploy &amp; measure</span>
+          <span style="font-size:14px;line-height:1.6;color:var(--muted)">Ship to production with instrumentation live from day one.</span>
+        </div>
+        <div style="border-top:2px solid var(--teal);padding-top:22px;display:flex;flex-direction:column;gap:10px">
+          <span style="font-family:'Archivo',sans-serif;font-weight:800;font-size:34px;color:var(--teal);line-height:1">04</span>
+          <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:18px;letter-spacing:-0.01em">Compound the gains</span>
+          <span style="font-size:14px;line-height:1.6;color:var(--muted)">Iterate on the metrics until progress becomes the default.</span>
+        </div>
     </div>
   </div>
 
-  <!-- ============ METRICS ============ -->
-  <div data-animate style="border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:linear-gradient(160deg,var(--teal2),var(--bg))">
-    <div style="max-width:1200px;margin:0 auto;padding:72px 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:32px">
-      <sc-for list="{{ metrics }}" as="m" hint-placeholder-count="4">
-        <div style="display:flex;flex-direction:column;gap:8px">
-          <span class="vc-metric-value" style="font-family:'Archivo',sans-serif;font-weight:800;font-size:52px;line-height:1;letter-spacing:-0.03em;color:var(--text)">{{ m.value }}</span>
-          <span style="font-size:14px;line-height:1.5;color:#cfe6ea">{{ m.label }}</span>
-        </div>
-      </sc-for>
-    </div>
-  </div>
   <!-- ============ SOCIAL PROOF TICKER ============ -->
   <div class="ticker-wrap" data-animate>
     <div class="ticker-label">Building for teams at</div>
@@ -171,25 +199,48 @@
   </div>
 
   <!-- ============ TESTIMONIALS ============ -->
-  <div data-animate style="border-top:1px solid var(--line);background:var(--panel)">
+  <div id="testimonials" class="vc-section" data-animate style="border-top:1px solid var(--line);background:var(--panel)">
     <div style="max-width:1200px;margin:0 auto;padding:104px 40px">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:40px">Proof, not promises</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:56px;border-radius:18px;background:linear-gradient(160deg,var(--teal2),var(--bg));border:1px solid var(--line);overflow:hidden">
+        <div style="display:flex;flex-direction:column;gap:8px;padding:36px 32px;border-right:1px solid rgba(255,255,255,.07)">
+          <span class="vc-metric-value" style="font-family:'Archivo',sans-serif;font-weight:800;font-size:48px;line-height:1;letter-spacing:-0.03em;color:var(--text)">99.99%</span>
+          <span style="font-size:14px;line-height:1.5;color:#cfe6ea">Uptime across deployed systems</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;padding:36px 32px;border-right:1px solid rgba(255,255,255,.07)">
+          <span class="vc-metric-value" style="font-family:'Archivo',sans-serif;font-weight:800;font-size:48px;line-height:1;letter-spacing:-0.03em;color:var(--text)">2.84M</span>
+          <span style="font-size:14px;line-height:1.5;color:#cfe6ea">Operations per second at peak</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;padding:36px 32px;border-right:1px solid rgba(255,255,255,.07)">
+          <span class="vc-metric-value" style="font-family:'Archivo',sans-serif;font-weight:800;font-size:48px;line-height:1;letter-spacing:-0.03em;color:var(--text)">11 hrs</span>
+          <span style="font-size:14px;line-height:1.5;color:#cfe6ea">Saved per operator per week</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px;padding:36px 32px">
+          <span class="vc-metric-value" style="font-family:'Archivo',sans-serif;font-weight:800;font-size:48px;line-height:1;letter-spacing:-0.03em;color:var(--text)">6 wks</span>
+          <span style="font-size:14px;line-height:1.5;color:#cfe6ea">Median time to first production deploy</span>
+        </div>
+      </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
-        <sc-for list="{{ testimonials }}" as="q" hint-placeholder-count="2">
           <div class="vc-card" style="border:1px solid var(--line);border-radius:18px;background:var(--bg);padding:36px;display:flex;flex-direction:column;gap:24px">
-            <p style="font-family:'Archivo',sans-serif;font-weight:500;font-size:24px;line-height:1.4;letter-spacing:-0.01em;color:var(--text);text-wrap:pretty">“{{ q.quote }}”</p>
+            <p style="font-family:'Archivo',sans-serif;font-weight:500;font-size:24px;line-height:1.4;letter-spacing:-0.01em;color:var(--text);text-wrap:pretty">"Vercodex rebuilt our dispatch system and we recovered eleven hours a week, per operator. It paid for itself in a quarter."</p>
             <div style="display:flex;align-items:center;gap:13px;margin-top:auto">
-              <span style="width:40px;height:40px;border-radius:11px;background:var(--tealSoft);border:1px solid var(--teal2);display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:700;color:var(--teal);flex:none">{{ q.initial }}</span>
-              <div><div style="font-size:14px;font-weight:600;color:var(--text)">{{ q.name }}</div><div style="font-size:13px;color:var(--muted)">{{ q.role }}</div></div>
+              <span style="width:40px;height:40px;border-radius:11px;background:var(--tealSoft);border:1px solid var(--teal2);display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:700;color:var(--teal);flex:none">M</span>
+              <div><div style="font-size:14px;font-weight:600;color:var(--text)">Operations Lead</div><div style="font-size:13px;color:var(--muted)">Energy &amp; logistics</div></div>
             </div>
           </div>
-        </sc-for>
+          <div class="vc-card" style="border:1px solid var(--line);border-radius:18px;background:var(--bg);padding:36px;display:flex;flex-direction:column;gap:24px">
+            <p style="font-family:'Archivo',sans-serif;font-weight:500;font-size:24px;line-height:1.4;letter-spacing:-0.01em;color:var(--text);text-wrap:pretty">"They shipped in six weeks what our previous vendor couldn't deliver in a year — and we can actually measure the gain."</p>
+            <div style="display:flex;align-items:center;gap:13px;margin-top:auto">
+              <span style="width:40px;height:40px;border-radius:11px;background:var(--tealSoft);border:1px solid var(--teal2);display:flex;align-items:center;justify-content:center;font-family:'Archivo',sans-serif;font-weight:700;color:var(--teal);flex:none">A</span>
+              <div><div style="font-size:14px;font-weight:600;color:var(--text)">Chief Technology Officer</div><div style="font-size:13px;color:var(--muted)">Capital markets</div></div>
+            </div>
+          </div>
       </div>
     </div>
   </div>
 
   <!-- ============ INTEGRATIONS ============ -->
-  <div data-animate style="max-width:1200px;margin:0 auto;padding:104px 40px">
+  <div id="integrations" class="vc-section" data-animate style="max-width:1200px;margin:0 auto;padding:104px 40px;width:100%">
     <div style="display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:center">
       <div>
         <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--teal);margin-bottom:14px">Fits your stack</div>
@@ -197,36 +248,69 @@
         <p style="margin-top:18px;font-size:15px;line-height:1.65;color:var(--muted);max-width:42ch">No rip-and-replace. We connect to your clouds, warehouses and pipelines and meet your data where it lives.</p>
       </div>
       <div style="display:flex;flex-wrap:wrap;gap:12px">
-        <sc-for list="{{ integrations }}" as="g" hint-placeholder-count="10">
-          <span class="vc-card" style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text);background:var(--panel);border:1px solid var(--line);padding:12px 18px;border-radius:11px" style-hover="border-color:var(--teal2)">{{ g.name }}</span>
-        </sc-for>
+          <span class="vc-card" style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text);background:var(--panel);border:1px solid var(--line);padding:12px 18px;border-radius:11px">AWS</span>
+          <span class="vc-card" style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text);background:var(--panel);border:1px solid var(--line);padding:12px 18px;border-radius:11px">Google Cloud</span>
+          <span class="vc-card" style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text);background:var(--panel);border:1px solid var(--line);padding:12px 18px;border-radius:11px">Azure</span>
+          <span class="vc-card" style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text);background:var(--panel);border:1px solid var(--line);padding:12px 18px;border-radius:11px">Snowflake</span>
+          <span class="vc-card" style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text);background:var(--panel);border:1px solid var(--line);padding:12px 18px;border-radius:11px">Databricks</span>
+          <span class="vc-card" style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text);background:var(--panel);border:1px solid var(--line);padding:12px 18px;border-radius:11px">PostgreSQL</span>
+          <span class="vc-card" style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text);background:var(--panel);border:1px solid var(--line);padding:12px 18px;border-radius:11px">Apache Kafka</span>
+          <span class="vc-card" style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text);background:var(--panel);border:1px solid var(--line);padding:12px 18px;border-radius:11px">Stripe</span>
+          <span class="vc-card" style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text);background:var(--panel);border:1px solid var(--line);padding:12px 18px;border-radius:11px">Datadog</span>
+          <span class="vc-card" style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text);background:var(--panel);border:1px solid var(--line);padding:12px 18px;border-radius:11px">Salesforce</span>
+          <span class="vc-card" style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text);background:var(--panel);border:1px solid var(--line);padding:12px 18px;border-radius:11px">dbt</span>
+          <span class="vc-card" style="font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text);background:var(--panel);border:1px solid var(--line);padding:12px 18px;border-radius:11px">Twilio</span>
       </div>
     </div>
   </div>
 
   <!-- ============ FAQ ============ -->
-  <div id="faq" data-animate style="max-width:860px;margin:0 auto;padding:60px 40px 104px">
+  <div id="faq" class="vc-section" data-animate style="max-width:860px;margin:0 auto;padding:60px 40px 104px;width:100%">
     <div style="text-align:center;margin-bottom:44px">
       <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--gold);margin-bottom:14px">Questions</div>
       <h2 style="font-family:'Archivo',sans-serif;font-weight:700;font-size:38px;letter-spacing:-0.025em">The things teams ask first.</h2>
     </div>
     <div style="display:flex;flex-direction:column;gap:12px">
-      <sc-for list="{{ faqs }}" as="q" hint-placeholder-count="5">
         <div style="border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden">
-          <button onclick="{{ q.toggle }}" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:transparent;border:none;cursor:pointer;text-align:left;font-family:'Archivo',sans-serif;font-weight:600;font-size:17px;color:var(--text)">
-            <span>{{ q.question }}</span>
-            <span style="{{ q.iconStyle }}">+</span>
+          <button onclick="vcFaq(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:transparent;border:none;cursor:pointer;text-align:left;font-family:'Archivo',sans-serif;font-weight:600;font-size:17px;color:var(--text)">
+            <span>What kinds of companies do you work with?</span>
+            <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:24px;color:var(--teal);flex:none;transition:transform .2s">+</span>
           </button>
-          <sc-if value="{{ q.open }}" hint-placeholder-val="{{ false }}">
-            <div style="padding:0 24px 22px;font-size:15px;line-height:1.65;color:var(--muted)">{{ q.answer }}</div>
-          </sc-if>
+          <div class="faq-answer" style="display:none;padding:0 24px 22px;font-size:15px;line-height:1.65;color:var(--muted)">Organizations in industries where technology directly moves the bottom line — energy, capital markets, aerospace, life sciences and advanced manufacturing. If friction is costing you time or money, we can help.</div>
         </div>
-      </sc-for>
+        <div style="border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden">
+          <button onclick="vcFaq(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:transparent;border:none;cursor:pointer;text-align:left;font-family:'Archivo',sans-serif;font-weight:600;font-size:17px;color:var(--text)">
+            <span>Do you build from scratch or on top of our stack?</span>
+            <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:24px;color:var(--teal);flex:none;transition:transform .2s">+</span>
+          </button>
+          <div class="faq-answer" style="display:none;padding:0 24px 22px;font-size:15px;line-height:1.65;color:var(--muted)">Both. We frequently build new applications, and just as often layer focused systems on top of the clouds, warehouses and pipelines you already run. No rip-and-replace.</div>
+        </div>
+        <div style="border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden">
+          <button onclick="vcFaq(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:transparent;border:none;cursor:pointer;text-align:left;font-family:'Archivo',sans-serif;font-weight:600;font-size:17px;color:var(--text)">
+            <span>How fast can we see something live?</span>
+            <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:24px;color:var(--teal);flex:none;transition:transform .2s">+</span>
+          </button>
+          <div class="faq-answer" style="display:none;padding:0 24px 22px;font-size:15px;line-height:1.65;color:var(--muted)">Pilots typically reach production in around six weeks. We instrument from day one, so you can measure impact as soon as it ships.</div>
+        </div>
+        <div style="border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden">
+          <button onclick="vcFaq(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:transparent;border:none;cursor:pointer;text-align:left;font-family:'Archivo',sans-serif;font-weight:600;font-size:17px;color:var(--text)">
+            <span>Who owns the code we pay for?</span>
+            <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:24px;color:var(--teal);flex:none;transition:transform .2s">+</span>
+          </button>
+          <div class="faq-answer" style="display:none;padding:0 24px 22px;font-size:15px;line-height:1.65;color:var(--muted)">You do. Full ownership, full source, no lock-in. We build it to outlast our engagement.</div>
+        </div>
+        <div style="border:1px solid var(--line);border-radius:14px;background:var(--panel);overflow:hidden">
+          <button onclick="vcFaq(this)" style="width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;background:transparent;border:none;cursor:pointer;text-align:left;font-family:'Archivo',sans-serif;font-weight:600;font-size:17px;color:var(--text)">
+            <span>How do you measure success?</span>
+            <span style="font-family:'Archivo',sans-serif;font-weight:600;font-size:24px;color:var(--teal);flex:none;transition:transform .2s">+</span>
+          </button>
+          <div class="faq-answer" style="display:none;padding:0 24px 22px;font-size:15px;line-height:1.65;color:var(--muted)">We agree on the metrics that matter before we write a line of code — throughput, hours saved, cost, uptime — and report against them continuously.</div>
+        </div>
     </div>
   </div>
 
   <!-- ============ FINAL CTA ============ -->
-  <div id="cta" style="max-width:1200px;margin:0 auto;padding:0 40px 104px">
+  <div id="cta" class="vc-section" style="max-width:1200px;margin:0 auto;padding:0 40px 104px;width:100%">
     <div style="position:relative;border:1px solid var(--teal2);border-radius:24px;background:linear-gradient(160deg,var(--teal2),var(--bg));padding:72px 48px;text-align:center;overflow:hidden">
       <div style="position:absolute;top:-80px;right:-60px;opacity:.08;pointer-events:none">
         <svg width="360" height="360" viewBox="-120 -120 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" stroke-linejoin="round">
@@ -242,15 +326,11 @@
         <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:48px;line-height:1.05;letter-spacing:-0.03em;text-wrap:balance;max-width:18ch;margin:0 auto">Ready to move your work forward?</h2>
         <p style="margin:18px auto 0;font-size:17px;line-height:1.6;color:#d4eaee;max-width:50ch">Leave your email. We'll send product updates, early access and the occasional note on what we're building next.</p>
         <div style="margin-top:34px;display:flex;flex-direction:column;align-items:center;gap:14px">
-          <sc-if value="{{ subscribed }}" hint-placeholder-val="{{ false }}">
-            <div style="display:inline-flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--teal2);padding:16px 26px;border-radius:13px;font-size:16px"><span style="width:22px;height:22px;border-radius:50%;background:var(--teal);color:#0c1416;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">✓</span>You're on the list — talk soon.</div>
-          </sc-if>
-          <sc-if value="{{ notSubscribed }}" hint-placeholder-val="{{ true }}">
-            <div style="display:flex;gap:10px;background:var(--bg);border:1px solid var(--line);padding:8px 8px 8px 10px;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.4)">
-              <input value="{{ email }}" oninput="{{ setEmail }}" placeholder="you@company.com" style="font-family:'IBM Plex Sans';font-size:16px;color:var(--text);background:transparent;border:none;outline:none;padding:12px 16px;width:300px">
-              <button onclick="{{ submitEmail }}" style="font-family:'IBM Plex Sans';font-weight:600;font-size:16px;color:#0c1416;background:var(--teal);border:none;padding:12px 28px;border-radius:10px;cursor:pointer;white-space:nowrap" style-hover="filter:brightness(1.08)">Notify me</button>
-            </div>
-          </sc-if>
+          <div id="cta-success" style="display:none;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--teal2);padding:16px 26px;border-radius:13px;font-size:16px"><span style="width:22px;height:22px;border-radius:50%;background:var(--teal);color:#0c1416;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">✓</span>You're on the list — talk soon.</div>
+          <div id="cta-form" style="display:flex;gap:10px;background:var(--bg);border:1px solid var(--line);padding:8px 8px 8px 10px;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.4)">
+            <input id="cta-email" type="email" placeholder="you@company.com" style="font-family:'IBM Plex Sans';font-size:16px;color:var(--text);background:transparent;border:none;outline:none;padding:12px 16px;width:300px">
+            <button onclick="vcSubmit('cta')" style="font-family:'IBM Plex Sans';font-weight:600;font-size:16px;color:#0c1416;background:var(--teal);border:none;padding:12px 28px;border-radius:10px;cursor:pointer;white-space:nowrap">Notify me</button>
+          </div>
         </div>
       </div>
     </div>
@@ -302,84 +382,27 @@
 
 </div>
 
-<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1280,&quot;height&quot;:3400},&quot;theme&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;graphite&quot;,&quot;midnight&quot;,&quot;ember&quot;],&quot;default&quot;:&quot;graphite&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Brand&quot;},&quot;heroVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;a&quot;,&quot;b&quot;,&quot;c&quot;],&quot;default&quot;:&quot;a&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Layout&quot;}}">
-class Component extends DCLogic {
-  constructor(props){
-    super(props);
-    this.rootRef = React.createRef();
-    this.state = {
-      email: '',
-      subscribed: false,
-      openFaq: 0
-    };
-  }
-  renderVals(){
-    const features = [
-      { num:'01', title:'Built to scale', body:'Systems engineered for millions of operations a second — without breaking stride or budget.' },
-      { num:'02', title:'Measurable by default', body:'Every deployment ships with the metrics that prove it actually moved the needle.' },
-      { num:'03', title:'Industry-grade security', body:'Audit trails, isolation and compliance built in from the very first commit.' },
-      { num:'04', title:'Runs anywhere', body:'Any region, any cloud, close to where the real work happens. No lock-in.' },
-      { num:'05', title:'Human-centered', body:'Interfaces your team actually wants to use — not ones they merely tolerate.' },
-      { num:'06', title:'Always forward', body:'Continuous delivery that compounds. Every cycle leaves you measurably further ahead.' }
-    ];
-
-    const showcasePoints = [
-      { text:'Live throughput, uptime and cost in a single pane of glass.' },
-      { text:'Alerting tuned to your thresholds, not generic defaults.' },
-      { text:'Exportable reports that prove ROI to the people who fund the work.' }
-    ];
-
-    const steps = [
-      { num:'01', title:'Map the friction', body:'We study where your operation loses time, money or momentum.' },
-      { num:'02', title:'Build the system', body:'A focused application designed around your real workflow.' },
-      { num:'03', title:'Deploy & measure', body:'Ship to production with instrumentation live from day one.' },
-      { num:'04', title:'Compound the gains', body:'Iterate on the metrics until progress becomes the default.' }
-    ];
-
-    const metrics = [
-      { value:'99.99%', label:'Uptime across deployed systems' },
-      { value:'2.84M', label:'Operations per second at peak' },
-      { value:'12', label:'Core industries served' },
-      { value:'40+', label:'Countries deployed in' }
-    ];
-
-    const testimonials = [
-      { quote:'Vercodex rebuilt our dispatch system and we recovered eleven hours a week, per operator. It paid for itself in a quarter.', initial:'M', name:'Operations Lead', role:'Energy & logistics' },
-      { quote:'They shipped in six weeks what our previous vendor couldn't deliver in a year — and we can actually measure the gain.', initial:'A', name:'Chief Technology Officer', role:'Capital markets' }
-    ];
-
-    const integrations = ['AWS','Google Cloud','Azure','Snowflake','Databricks','PostgreSQL','Apache Kafka','Stripe','Datadog','Twilio','Salesforce','dbt'].map(n => ({ name:n }));
-
-    const faqData = [
-      { question:'What kinds of companies do you work with?', answer:'Organizations in industries where technology directly moves the bottom line — energy, capital markets, aerospace, life sciences and advanced manufacturing. If friction is costing you time or money, we can help.' },
-      { question:'Do you build from scratch or on top of our stack?', answer:'Both. We frequently build new applications, and just as often layer focused systems on top of the clouds, warehouses and pipelines you already run. No rip-and-replace.' },
-      { question:'How fast can we see something live?', answer:'Pilots typically reach production in around six weeks. We instrument from day one, so you can measure impact as soon as it ships.' },
-      { question:'Who owns the code we pay for?', answer:'You do. Full ownership, full source, no lock-in. We build it to outlast our engagement.' },
-      { question:'How do you measure success?', answer:'We agree on the metrics that matter before we write a line of code — throughput, hours saved, cost, uptime — and report against them continuously.' }
-    ];
-    const faqs = faqData.map((q, i) => ({
-      question: q.question,
-      answer: q.answer,
-      open: this.state.openFaq === i,
-      toggle: () => this.setState(s => ({ openFaq: s.openFaq === i ? -1 : i })),
-      iconStyle: 'font-family:'Archivo',sans-serif;font-weight:600;font-size:24px;color:var(--teal);flex:none;transition:transform .2s;transform:rotate(' + (this.state.openFaq===i ? '45deg' : '0deg') + ')'
-    }));
-
-    return {
-      rootRef: this.rootRef,
-      email: this.state.email,
-      subscribed: this.state.subscribed,
-      notSubscribed: !this.state.subscribed,
-      setEmail: (e) => this.setState({ email: e.target.value }),
-      submitEmail: () => { if(/.+@.+\..+/.test(this.state.email)) this.setState({ subscribed: true }); },
-      features, showcasePoints, steps, metrics,
-      testimonials, integrations, faqs
-    };
+<script>
+function vcFaq(btn) {
+  var answer = btn.parentElement.querySelector('.faq-answer');
+  var icon = btn.querySelector('span:last-child');
+  var open = answer.style.display !== 'none' && answer.style.display !== '';
+  document.querySelectorAll('.faq-answer').forEach(function(a) { a.style.display = 'none'; });
+  document.querySelectorAll('.faq-answer + * span:last-child, button span:last-child').forEach(function(i) {
+    if (i.textContent === '+' || i.textContent === '×') i.style.transform = '';
+  });
+  if (!open) {
+    answer.style.display = 'block';
+    icon.style.transform = 'rotate(45deg)';
   }
 }
+function vcSubmit(prefix) {
+  var input = document.getElementById(prefix + '-email');
+  if (!input || !/.+@.+\..+/.test(input.value)) return;
+  document.getElementById(prefix + '-form').style.display = 'none';
+  var success = document.getElementById(prefix + '-success');
+  success.style.display = 'flex';
+}
 </script>
-
-
-<script src="js/main.js"></script>
 <script src="js/app.js"></script>
 </body></html>

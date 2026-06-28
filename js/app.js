@@ -186,3 +186,26 @@
   }, { threshold: 0.5 });
   metrics.forEach(function (el) { io.observe(el); });
 })();
+
+/* ── Nav scroll spy ──────────────────────────────────────────────────────── */
+(function () {
+  var links = document.querySelectorAll('.nav-link[data-section]');
+  if (!links.length) return;
+  var ids = Array.from(links).map(function (l) { return l.dataset.section; });
+  var sections = ids.map(function (id) { return document.getElementById(id); }).filter(Boolean);
+  if (!sections.length) return;
+
+  function setActive(id) {
+    links.forEach(function (l) {
+      l.classList.toggle('vc-active', l.dataset.section === id);
+    });
+  }
+
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
+  }, { rootMargin: '-15% 0px -75% 0px', threshold: 0 });
+
+  sections.forEach(function (s) { io.observe(s); });
+})();

@@ -423,10 +423,24 @@
 
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{width:100%}
+  html{scroll-behavior:smooth}
   body{background:#15181B;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   ::selection{background:#2E97A8;color:#0c0e10}
   @keyframes vcfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
   @keyframes vcbar{from{transform:scaleY(.3)}to{transform:scaleY(1)}}
+
+/* ── Nav active state ────────────────────────────────────────────────────── */
+.nav-link{color:var(--muted);transition:color .2s}
+.nav-link:hover,.nav-link.vc-active{color:var(--text)}
+
+/* ── Full-page sections ──────────────────────────────────────────────────── */
+.vc-section{
+  scroll-margin-top:62px;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
 
 /* ── Animate-in ─────────────────────────────────────────────────────────── */
 [data-animate]{
