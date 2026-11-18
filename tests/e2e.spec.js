@@ -35,24 +35,21 @@ test.describe('Vercodex landing page', () => {
     expect(box.height).toBeGreaterThan(300);
   });
 
-  test('ticker is visible and contains logo names', async ({ page }) => {
-    const ticker = page.locator('.ticker-wrap');
-    await expect(ticker).toBeVisible();
-    await expect(page.locator('.ticker-inner').first()).toContainText('MERIDIAN ENERGY');
-    await expect(page.locator('.ticker-inner').first()).toContainText('ATLAS CAPITAL');
+  test('fabricated social proof is absent', async ({ page }) => {
+    await expect(page.locator('.ticker-wrap')).toHaveCount(0);
+    await expect(page.locator('#testimonials')).toHaveCount(0);
+    const body = await page.locator('body').innerText();
+    for (const claim of ['MERIDIAN ENERGY', 'ATLAS CAPITAL', 'Proof, not promises', '99.99%', '2.84M']) {
+      expect(body).not.toContain(claim);
+    }
   });
 
-  test('ticker is positioned between metrics and testimonials', async ({ page }) => {
-    const allSections = await page.evaluate(() => {
-      const sections = [];
-      document.querySelectorAll('#features, #faq, #cta, .ticker-wrap, [data-animate]').forEach(el => {
-        sections.push({ id: el.id || el.className, top: el.getBoundingClientRect().top + window.scrollY });
-      });
-      return sections;
-    });
-    // Just verify ticker exists in DOM after metrics
-    const ticker = page.locator('.ticker-wrap');
-    await expect(ticker).toBeVisible();
+  test('fonts load without 404s', async ({ page }) => {
+    const failed = [];
+    page.on('response', r => { if (r.url().includes('.woff2') && !r.status() >= 400) failed.push(r.url()); });
+    await page.reload();
+    await page.waitForLoadState('networkidle');
+    expect(failed).toEqual([]);
   });
 
   test('email form works', async ({ page }) => {
