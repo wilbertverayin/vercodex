@@ -56,11 +56,12 @@
       <h1 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:74px;line-height:1.02;letter-spacing:-0.03em;max-width:16ch;margin:0 auto;text-wrap:balance">Move humanity's advancement <span style="color:var(--teal)">forward.</span></h1>
       <p style="margin:26px auto 0;font-size:18px;line-height:1.6;color:var(--muted);max-width:60ch">Vercodex builds the applications that high-stakes industries run on — energy, capital, aerospace, life sciences and advanced manufacturing. Less friction, more output, measurable progress.</p>
       <div style="margin-top:40px;display:flex;flex-direction:column;align-items:center;gap:14px">
-        <div id="hero-success" style="display:none;align-items:center;gap:10px;background:var(--tealSoft);border:1px solid var(--teal2);padding:14px 22px;border-radius:12px;font-size:15px;color:var(--text)"><span style="width:20px;height:20px;border-radius:50%;background:var(--teal);color:#0c1416;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">✓</span>You're on the list — we'll be in touch.</div>
+        <div id="hero-success" role="status" style="display:none;align-items:center;gap:10px;background:var(--tealSoft);border:1px solid var(--teal2);padding:14px 22px;border-radius:12px;font-size:15px;color:var(--text)"><span style="width:20px;height:20px;border-radius:50%;background:var(--teal);color:#0c1416;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">✓</span>You're on the list — we'll be in touch.</div>
         <div id="hero-form" style="display:flex;gap:10px;background:var(--panel);border:1px solid var(--line);padding:7px 7px 7px 8px;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.4)">
           <input id="hero-email" type="email" placeholder="you@company.com" style="font-family:'IBM Plex Sans';font-size:15px;color:var(--text);background:transparent;border:none;outline:none;padding:11px 14px;width:280px">
           <button onclick="vcSubmit('hero')" style="font-family:'IBM Plex Sans';font-weight:600;font-size:15px;color:#0c1416;background:var(--teal);border:none;padding:11px 24px;border-radius:9px;cursor:pointer;white-space:nowrap">Notify me</button>
         </div>
+        <div id="hero-error" role="alert" style="display:none;font-size:14px;color:#D2604A;max-width:420px;text-align:center"></div>
         <span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted)">No spam. Product updates and early access only.</span>
       </div>
     </div>
@@ -326,11 +327,12 @@
         <h2 style="font-family:'Archivo',sans-serif;font-weight:800;font-size:48px;line-height:1.05;letter-spacing:-0.03em;text-wrap:balance;max-width:18ch;margin:0 auto">Ready to move your work forward?</h2>
         <p style="margin:18px auto 0;font-size:17px;line-height:1.6;color:#d4eaee;max-width:50ch">Leave your email. We'll send product updates, early access and the occasional note on what we're building next.</p>
         <div style="margin-top:34px;display:flex;flex-direction:column;align-items:center;gap:14px">
-          <div id="cta-success" style="display:none;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--teal2);padding:16px 26px;border-radius:13px;font-size:16px"><span style="width:22px;height:22px;border-radius:50%;background:var(--teal);color:#0c1416;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">✓</span>You're on the list — talk soon.</div>
+          <div id="cta-success" role="status" style="display:none;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--teal2);padding:16px 26px;border-radius:13px;font-size:16px"><span style="width:22px;height:22px;border-radius:50%;background:var(--teal);color:#0c1416;font-weight:700;display:flex;align-items:center;justify-content:center;flex:none">✓</span>You're on the list — talk soon.</div>
           <div id="cta-form" style="display:flex;gap:10px;background:var(--bg);border:1px solid var(--line);padding:8px 8px 8px 10px;border-radius:14px;box-shadow:0 16px 40px rgba(0,0,0,.4)">
             <input id="cta-email" type="email" placeholder="you@company.com" style="font-family:'IBM Plex Sans';font-size:16px;color:var(--text);background:transparent;border:none;outline:none;padding:12px 16px;width:300px">
             <button onclick="vcSubmit('cta')" style="font-family:'IBM Plex Sans';font-weight:600;font-size:16px;color:#0c1416;background:var(--teal);border:none;padding:12px 28px;border-radius:10px;cursor:pointer;white-space:nowrap">Notify me</button>
           </div>
+          <div id="cta-error" role="alert" style="display:none;font-size:14px;color:#D2604A;max-width:420px;text-align:center"></div>
         </div>
       </div>
     </div>
@@ -396,12 +398,37 @@ function vcFaq(btn) {
     icon.style.transform = 'rotate(45deg)';
   }
 }
-function vcSubmit(prefix) {
+var FORMSPREE_FORM_ID = 'FORMSPREE_FORM_ID';
+async function vcSubmit(prefix) {
   var input = document.getElementById(prefix + '-email');
-  if (!input || !/.+@.+\..+/.test(input.value)) return;
-  document.getElementById(prefix + '-form').style.display = 'none';
-  var success = document.getElementById(prefix + '-success');
-  success.style.display = 'flex';
+  var button = document.querySelector('#' + prefix + '-form button');
+  var error = document.getElementById(prefix + '-error');
+  error.style.display = 'none';
+  if (!input || !/.+@.+\..+/.test(input.value)) {
+    error.textContent = 'Enter a valid email address.';
+    error.style.display = 'block';
+    return;
+  }
+  var label = button.textContent;
+  button.disabled = true;
+  input.disabled = true;
+  button.textContent = 'Sending...';
+  try {
+    var res = await fetch('https://formspree.io/f/' + FORMSPREE_FORM_ID, {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: input.value, source: prefix })
+    });
+    if (!res.ok) throw new Error('status ' + res.status);
+    document.getElementById(prefix + '-form').style.display = 'none';
+    document.getElementById(prefix + '-success').style.display = 'flex';
+  } catch (e) {
+    error.textContent = 'Something went wrong and your email was not saved. Please try again.';
+    error.style.display = 'block';
+    button.disabled = false;
+    input.disabled = false;
+    button.textContent = label;
+  }
 }
 </script>
 <script src="js/app.js"></script>

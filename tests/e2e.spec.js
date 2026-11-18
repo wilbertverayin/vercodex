@@ -55,12 +55,47 @@ test.describe('Vercodex landing page', () => {
     await expect(ticker).toBeVisible();
   });
 
-  test('email form works', async ({ page }) => {
-    const input = page.locator('input[placeholder="you@company.com"]').first();
-    await input.fill('test@company.com');
-    const btn = page.locator('button:has-text("Notify me")').first();
-    await btn.click();
-    await expect(page.locator("text=You're on the list").first()).toBeVisible({ timeout: 3000 });
+  for (const prefix of ['hero', 'cta']) {
+    test(`${prefix} form posts to Formspree and shows success`, async ({ page }) => {
+      let request;
+      await page.route('https://formspree.io/f/*', async route => {
+        request = route.request();
+        await route.fulfill({ status: 200, contentType: 'application/json', body: '{"ok":true}' });
+      });
+      await page.locator(`#${prefix}-email`).fill('test@company.com');
+      await page.locator(`#${prefix}-form button`).click();
+      await expect(page.locator(`#${prefix}-success`)).toBeVisible();
+      await expect(page.locator(`#${prefix}-form`)).toBeHidden();
+      expect(request.method()).toBe('POST');
+      expect(request.headers()['accept']).toBe('application/json');
+      expect(request.postDataJSON().email).toBe('test@company.com');
+    });
+
+    test(`${prefix} form shows an error and re-enables the button on failure`, async ({ page }) => {
+      let release;
+      const gate = new Promise(r => { release = r; });
+      await page.route('https://formspree.io/f/*', async route => {
+        await gate;
+        await route.fulfill({ status: 500, contentType: 'application/json', body: '{"error":"boom"}' });
+      });
+      const button = page.locator(`#${prefix}-form button`);
+      await page.locator(`#${prefix}-email`).fill('test@company.com');
+      await button.click();
+      await expect(button).toBeDisabled();
+      release();
+      await expect(page.locator(`#${prefix}-error`)).toContainText('not saved');
+      await expect(page.locator(`#${prefix}-success`)).toBeHidden();
+      await expect(button).toBeEnabled();
+    });
+  }
+
+  test('invalid email sends nothing', async ({ page }) => {
+    let called = false;
+    await page.route('https://formspree.io/f/*', route => { called = true; route.abort(); });
+    await page.locator('#hero-email').fill('nope');
+    await page.locator('#hero-form button').click();
+    await expect(page.locator('#hero-error')).toBeVisible();
+    expect(called).toBe(false);
   });
 
   test('FAQ accordion opens and closes', async ({ page }) => {
