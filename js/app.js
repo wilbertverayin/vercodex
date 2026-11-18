@@ -172,21 +172,6 @@
   els.forEach(function (el) { io.observe(el); });
 })();
 
-/* ── Metric value animated count-up ──────────────────────────────────────── */
-(function () {
-  var metrics = document.querySelectorAll('.vc-metric-value');
-  if (!metrics.length) return;
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      var el = e.target;
-      io.unobserve(el);
-      el.classList.add('counted');
-    });
-  }, { threshold: 0.5 });
-  metrics.forEach(function (el) { io.observe(el); });
-})();
-
 /* ── Nav scroll spy ──────────────────────────────────────────────────────── */
 (function () {
   var links = document.querySelectorAll('.nav-link[data-section]');
